@@ -13,82 +13,104 @@
 <body
   style="width: 100%; height: 100%; background-color:black; display: flex; justify-content: center; align-items: center;">
 
-  <canvas id="canvas" style="display: block;" width="350" height="350" ></canvas>
-  <div style="display: flex; justify-content: center; align-items: center; position: absolute; width: 100%; height: 100%;">
-      <img style=" width: 33rem;" src="./Blurred circle second.svg" alt="">
+  <canvas id="canvas" style="display: block;" width="350" height="350"></canvas>
+  <div
+    style="display: flex; justify-content: center; align-items: center; position: absolute; width: 100%; height: 100%;">
+    <img id="shield"  src="./Blurred circle second.svg" alt="">
   </div>
-  <h1 id="coreser" style="position:absolute; display: flex; justify-content: center; font-size: 500% ">Core Services
+  <h1 id="coreser">Core Services
 
 
-  <style>
-    #canvas {
-      display: block;
-      width: 1080;
-      height: 604;
-      border-radius:50% ;
-    }
-    @font-face {
-      font-family: "sfPro";
-      src: url(./fonts/SF-Pro-Display-Thin.otf);
-    }
-
-    #coreser {
-      font-family: "sfPro";
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      background-size: cover;
-      background-image: linear-gradient(90deg, #00F3BB, #00EBDE);
-    }
- 
-  </style>
-
-  <script>const canvas = document.getElementById("canvas");
-    const context = canvas.getContext("2d");
-
-   
-    // Math.min(canvas.width, canvas.height) / 2;
-
-    function drawCircle(x, y, radiusC, color) {
-      context.beginPath();
-      // context.arcTo(189 + 350, 50, 189 + 350, 50 + 50, 50);
-      context.arc(x, y, radiusC, 1, 2 * Math.PI);
-      context.fillStyle = color;
-      context.fill();
-    }
-
-    let radius =0;
-    let maxRadius=100.2;
-    function AnimatA(){
-      requestAnimationFrame(AnimatA);
-
-     context.clearRect(0, 0, canvas.width, canvas.height);
-     
-for (let i = 0; i < 50; i++) {
-  let angle = (i / 50) * Math.PI * 2;
-  let x1 = Math.cos(angle) * (canvas.width / 2 + radius+100);
-  let y1 = Math.sin(angle) * (canvas.width / 2 + radius+100);
-  let x2 = Math.cos(angle) * (radius);
-  let y2 = Math.sin(angle) * (radius);
-  context.setLineDash([5, 10]);
-  context.beginPath();
-  context.moveTo(canvas.width / 2 + x2, canvas.height / 2 + y2);
-  context.lineTo(canvas.width / 2 + x1, canvas.height / 2 + y1);
-  context.strokeStyle = "grey";
-  context.lineWidth = 2;
-  context.stroke();
-
-     radius += 0.00911;
-}
-  let radiusC=65;
-  drawCircle(canvas.width / 2, canvas.height / 2, radiusC, "black");
-    if (radius > maxRadius) {
-        radius =-50;
+    <style>
+      #canvas {
+        display: block;
+        /* width: 1080;
+        height: 604; */
+        border-radius: 50%;
       }
-}
-  AnimatA();
 
-  </script>
+      @font-face {
+        font-family: "sfPro";
+        src: url(./fonts/SF-Pro-Display-Thin.otf);
+      }
+      #shield{
+        width: 33rem;
+      }
+
+      #coreser {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        font-size: 78px;
+        font-family: "sfPro";
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-size: cover;
+        background-image: linear-gradient(90deg, #00F3BB, #00EBDE);
+      }
+
+      @media (max-width: 600px) {
+      #coreser{
+          font-size: 48px !important;
+        }
+        #canvas{
+          width: 250;
+          height: 250;
+          border-radius: 50%;
+        }
+        #shield{
+          width: 26rem;
+        }
+      }
+    </style>
+
+    <script>const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+
+
+      // Math.min(canvas.width, canvas.height) / 2;
+
+      function drawCircle(x, y, radiusC, color) {
+        context.beginPath();
+        // context.arcTo(189 + 350, 50, 189 + 350, 50 + 50, 50);
+        context.arc(x, y, radiusC, 1, 2 * Math.PI);
+        context.fillStyle = color;
+        context.fill();
+      }
+
+      let radius = 0;
+      let maxRadius = 100.2;
+      function AnimatA() {
+        requestAnimationFrame(AnimatA);
+
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < 50; i++) {
+          let angle = (i / 50) * Math.PI * 2;
+          let x1 = Math.cos(angle) * (canvas.width / 2 + radius + 100);
+          let y1 = Math.sin(angle) * (canvas.width / 2 + radius + 100);
+          let x2 = Math.cos(angle) * (radius);
+          let y2 = Math.sin(angle) * (radius);
+          context.setLineDash([5, 10]);
+          context.beginPath();
+          context.moveTo(canvas.width / 2 + x2, canvas.height / 2 + y2);
+          context.lineTo(canvas.width / 2 + x1, canvas.height / 2 + y1);
+          context.strokeStyle = "grey";
+          context.lineWidth = 2;
+          context.stroke();
+
+          radius += 0.00911;
+        }
+        let radiusC = 65;
+        drawCircle(canvas.width / 2, canvas.height / 2, radiusC, "black");
+        if (radius > maxRadius) {
+          radius = -50;
+        }
+      }
+      AnimatA();
+
+    </script>
 </body>
 
 </html>
